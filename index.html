@@ -450,7 +450,7 @@ function aplicarPermisos(){
   }
 }
 
-function loginDocente(){
+async function loginDocente(){
   const clave = document.getElementById('docente-clave').value;
   const error = document.getElementById('docente-login-error');
   if(clave === CLAVE_DOCENTE){
@@ -458,6 +458,7 @@ function loginDocente(){
     document.getElementById('docente-clave').value = '';
     error.classList.add('hidden-view');
     aplicarPermisos();
+    await cargarPublicaciones();
     render();
   } else {
     error.classList.remove('hidden-view');
@@ -560,6 +561,10 @@ function eliminar(id){
 
 function exportarClases(){
   if(!esDocente()) return;
+  if(!publicaciones.length){
+    alert('No hay publicaciones para exportar.\n\nSolo se exporta lo cargado desde el Panel Docente.\nLos enlaces fijos de la Biblioteca (LCT, ART, etc.) no se incluyen.\n\nPublicá un recurso con fecha, título y link, y volvé a exportar.');
+    return;
+  }
   const blob = new Blob([JSON.stringify(publicaciones, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -690,7 +695,7 @@ function render(){
 }
 
 async function cargarPublicaciones(){
-  let desdeArchivo = null;
+  let desdeArchivo = [];
   try {
     const res = await fetch('clases.json', { cache: 'no-store' });
     if(res.ok){
@@ -699,19 +704,26 @@ async function cargarPublicaciones(){
     }
   } catch (_) {}
 
-  const local = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+  let local = [];
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    if(Array.isArray(raw)) local = raw;
+  } catch (_) {}
 
-  // Prioridad: archivo compartido del sitio; si el docente editó en esta sesión, usa local.
-  if(esDocente() && Array.isArray(local) && local.length){
+  // Un [] vacío NO debe pisar contenido válido (bug que vaciaba el export).
+  if(local.length && desdeArchivo.length){
+    const maxLocal = Math.max(...local.map(i => Number(i.id) || 0));
+    const maxArchivo = Math.max(...desdeArchivo.map(i => Number(i.id) || 0));
+    publicaciones = maxLocal >= maxArchivo ? local : desdeArchivo;
+  } else if(local.length){
     publicaciones = local;
-  } else if(desdeArchivo){
+  } else if(desdeArchivo.length){
     publicaciones = desdeArchivo;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(publicaciones));
-  } else if(Array.isArray(local)){
-    publicaciones = local;
   } else {
     publicaciones = [];
   }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(publicaciones));
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

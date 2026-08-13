@@ -10,8 +10,8 @@
 <style>
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #F8FAFC; /* Slate 50 */
-    color: #0F172A; /* Slate 900 */
+    background-color: #F8FAFC;
+    color: #0F172A;
   }
 
   .nav-btn {
@@ -27,15 +27,15 @@
     background-color: #F1F5F9;
   }
   .nav-btn.active {
-    color: #2563EB; /* Blue 600 */
-    background-color: #EFF6FF; /* Blue 50 */
+    color: #2563EB;
+    background-color: #EFF6FF;
     font-weight: 600;
   }
 
   .card-modern {
     background: #FFFFFF;
     border: 1px solid #E2E8F0;
-    border-radius: 0.75rem; /* 12px */
+    border-radius: 0.75rem;
     transition: all 0.2s ease;
   }
   .card-modern:hover {
@@ -61,10 +61,10 @@
 </head>
 <body>
 
-<!-- ===================== NAVBAR MODERNO ===================== -->
+<!-- ===================== NAVBAR ===================== -->
 <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-3 cursor-pointer" onclick="showView('home')">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3 cursor-pointer shrink-0" onclick="showView('home')">
       <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
         66
       </div>
@@ -74,21 +74,25 @@
       </div>
     </div>
 
-    <nav class="hidden md:flex items-center gap-1">
+    <nav class="hidden md:flex items-center gap-1 flex-wrap justify-end">
       <button class="nav-btn active" data-view="home" onclick="showView('home')">Inicio</button>
       <button class="nav-btn" data-view="marco" onclick="showView('marco')">Programa</button>
+      <button class="nav-btn" data-view="clases" onclick="showView('clases')">Clases</button>
       <button class="nav-btn" data-view="biblioteca" onclick="showView('biblioteca')">Biblioteca & Videos</button>
-      <button class="nav-btn" data-view="docente" onclick="showView('docente')">Panel Docente</button>
       <button class="nav-btn" data-view="ia" onclick="showView('ia')">Asistente IA</button>
+      <button id="nav-docente" class="nav-btn hidden-view" data-view="docente" onclick="showView('docente')">Panel Docente</button>
     </nav>
+
+    <button id="btn-acceso-docente" onclick="showView('docente')" class="text-xs text-slate-400 hover:text-slate-600 shrink-0">
+      Acceso docente
+    </button>
   </div>
 </header>
 
 <main class="max-w-7xl mx-auto px-6 py-10">
 
-<!-- ===================== HOME / DASHBOARD ===================== -->
+<!-- ===================== HOME ===================== -->
 <section id="view-home" class="fade-in space-y-10">
-  <!-- Hero Section -->
   <div class="card-modern p-8 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white relative overflow-hidden">
     <div class="max-w-2xl relative z-10 space-y-4">
       <span class="tag-badge bg-blue-500/20 text-blue-300 border border-blue-400/30">Régimen Cuatrimestral 2026</span>
@@ -99,17 +103,16 @@
         Plataforma académica oficial de la cátedra de Legislación Laboral. Acceso centralizado a recursos de clase, jurisprudencia, biblioteca digital y asistencia asistida por Inteligencia Artificial.
       </p>
       <div class="pt-2 flex flex-wrap gap-3">
-        <button onclick="showView('biblioteca')" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
-          Explorar Biblioteca Digital
+        <button onclick="showView('clases')" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+          Ver Clases
         </button>
-        <button onclick="showView('marco')" class="bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-lg backdrop-blur-sm transition-colors">
-          Ver Programa de la Materia
+        <button onclick="showView('biblioteca')" class="bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-lg backdrop-blur-sm transition-colors">
+          Explorar Biblioteca Digital
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Tarjeta Cátedra + Métricas -->
   <div class="grid md:grid-cols-3 gap-6">
     <div class="card-modern p-6 flex items-center gap-4">
       <div class="w-14 h-14 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-700 text-lg">
@@ -143,7 +146,6 @@
     </div>
   </div>
 
-  <!-- Accesos rápidos -->
   <div>
     <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Módulos del Sistema</h3>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -152,15 +154,15 @@
         <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Programa & Planificación</h4>
         <p class="text-xs text-slate-500 mt-1">Syllabus, régimen de cursado y fechas.</p>
       </div>
-      <div onclick="showView('biblioteca')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
+      <div onclick="showView('clases')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
         <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">02</div>
-        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Biblioteca & Legislación</h4>
-        <p class="text-xs text-slate-500 mt-1">LCT, leyes complementarias y doctrina.</p>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Clases</h4>
+        <p class="text-xs text-slate-500 mt-1">Material publicado y fecha de cada clase.</p>
       </div>
       <div onclick="showView('biblioteca')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
         <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">03</div>
-        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Videoteca de Clases</h4>
-        <p class="text-xs text-slate-500 mt-1">Grabaciones y contenido audiovisual.</p>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Biblioteca & Videos</h4>
+        <p class="text-xs text-slate-500 mt-1">Normativa, doctrina y videoteca.</p>
       </div>
       <div onclick="showView('ia')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
         <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">04</div>
@@ -171,7 +173,7 @@
   </div>
 </section>
 
-<!-- ===================== MARCO INSTITUCIONAL ===================== -->
+<!-- ===================== PROGRAMA ===================== -->
 <section id="view-marco" class="hidden-view fade-in space-y-6">
   <div>
     <h2 class="text-2xl font-bold text-slate-900">Programa Académico</h2>
@@ -217,6 +219,15 @@
   </div>
 </section>
 
+<!-- ===================== CLASES (ALUMNOS) ===================== -->
+<section id="view-clases" class="hidden-view fade-in space-y-6">
+  <div>
+    <h2 class="text-2xl font-bold text-slate-900">Clases</h2>
+    <p class="text-sm text-slate-500">Contenido publicado por la cátedra, con fecha de cada clase.</p>
+  </div>
+  <div id="lista-clases" class="space-y-3"></div>
+</section>
+
 <!-- ===================== BIBLIOTECA & VIDEOTECA ===================== -->
 <section id="view-biblioteca" class="hidden-view fade-in space-y-6">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -225,7 +236,6 @@
       <p class="text-sm text-slate-500">Recursos de estudio, normativa y grabaciones de clase.</p>
     </div>
 
-    <!-- Pestañas simples -->
     <div class="bg-slate-200/60 p-1 rounded-lg flex gap-1 self-start">
       <button onclick="showCat('legis', this)" class="subtab-btn active text-xs font-medium px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-sm transition-all">Legislación</button>
       <button onclick="showCat('doctrina', this)" class="subtab-btn text-xs font-medium px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all">Material & Doctrina</button>
@@ -233,7 +243,6 @@
     </div>
   </div>
 
-  <!-- VISTA LEGISLACIÓN -->
   <div id="cat-legis" class="grid sm:grid-cols-2 gap-4">
     <div class="card-modern p-5 flex justify-between items-start">
       <div>
@@ -256,7 +265,6 @@
     <div id="custom-legis-container" class="contents"></div>
   </div>
 
-  <!-- VISTA DOCTRINA -->
   <div id="cat-doctrina" class="grid sm:grid-cols-2 gap-4 hidden-view">
     <div class="card-modern p-5">
       <span class="tag-badge tag-blue mb-2">Guía de Cátedra</span>
@@ -266,15 +274,14 @@
     <div id="custom-doctrina-container" class="contents"></div>
   </div>
 
-  <!-- VISTA VIDEOTECA -->
   <div id="cat-video" class="hidden-view space-y-6">
     <div id="video-main-display" class="card-modern p-4 bg-slate-900 text-white overflow-hidden">
       <div id="main-video-frame" class="aspect-video w-full bg-slate-950 rounded-lg flex items-center justify-center overflow-hidden">
-        <p class="text-xs text-slate-400">Selecciona o carga un video para reproducirlo aquí</p>
+        <p class="text-xs text-slate-400">Selecciona un video para reproducirlo aquí</p>
       </div>
       <div class="pt-4">
         <h3 id="main-video-title" class="font-bold text-base text-white">Sin video cargado</h3>
-        <p id="main-video-desc" class="text-xs text-slate-400 mt-1">Carga enlaces desde el Panel Docente.</p>
+        <p id="main-video-desc" class="text-xs text-slate-400 mt-1">Los videos publicados por la cátedra aparecerán abajo.</p>
       </div>
     </div>
 
@@ -285,71 +292,102 @@
   </div>
 </section>
 
-<!-- ===================== PANEL DOCENTE ===================== -->
+<!-- ===================== PANEL DOCENTE (PROTEGIDO) ===================== -->
 <section id="view-docente" class="hidden-view fade-in space-y-6">
-  <div>
-    <h2 class="text-2xl font-bold text-slate-900">Panel Docente</h2>
-    <p class="text-sm text-slate-500">Gestión e ingreso de nuevos materiales de la cátedra.</p>
+  <div id="docente-login" class="max-w-md mx-auto card-modern p-8 space-y-4">
+    <div>
+      <h2 class="text-xl font-bold text-slate-900">Acceso docente</h2>
+      <p class="text-sm text-slate-500 mt-1">Solo el docente puede cargar o eliminar contenido.</p>
+    </div>
+    <div>
+      <label class="text-xs font-semibold text-slate-700" for="docente-clave">Clave de acceso</label>
+      <input type="password" id="docente-clave" placeholder="Ingresá tu clave" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" onkeydown="if(event.key==='Enter') loginDocente()">
+    </div>
+    <p id="docente-login-error" class="text-xs text-red-600 hidden-view">Clave incorrecta.</p>
+    <button onclick="loginDocente()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors">
+      Ingresar
+    </button>
   </div>
 
-  <div class="grid lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2 card-modern p-6 space-y-4">
-      <h3 class="font-semibold text-slate-900 text-base border-b pb-3">Cargar Recurso o Clase</h3>
-
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="text-xs font-semibold text-slate-700">Fecha de Clase</label>
-          <input type="text" id="doc-fecha" placeholder="Ej. Lunes 10 de Agosto" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-slate-700">Unidad Temática</label>
-          <select id="doc-unidad" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-            <option>Unidad 1 — Derecho y Relaciones Laborales</option>
-            <option>Unidad 2 — Contrato de Trabajo</option>
-            <option>Unidad 3 — Jornada y Remuneración</option>
-            <option>Unidad 4 — Extinción del Contrato</option>
-            <option>Unidad 5 — Derecho Colectivo</option>
-            <option>Unidad 6 — Riesgos del Trabajo</option>
-            <option>Unidad 7 — Propiedad Intelectual</option>
-          </select>
-        </div>
-      </div>
-
+  <div id="docente-panel" class="hidden-view space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
       <div>
-        <label class="text-xs font-semibold text-slate-700">Título del Contenido</label>
-        <input type="text" id="doc-titulo" placeholder="Ej. Análisis de caso: Despido con justa causa" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <h2 class="text-2xl font-bold text-slate-900">Panel Docente</h2>
+        <p class="text-sm text-slate-500">Cargá materiales. Los alumnos verán el contenido y la fecha de clase.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="text-xs font-semibold text-slate-700">Categoría</label>
-          <select id="doc-tipo" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-            <option value="video">Video / Clase Grabada (YouTube)</option>
-            <option value="doctrina">Material / Apunte (PDF/Word/Drive)</option>
-            <option value="legis">Normativa / Legislación</option>
-          </select>
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-slate-700">Enlace (URL / YouTube / Drive)</label>
-          <input type="text" id="doc-link" placeholder="https://..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-      </div>
-
-      <div>
-        <label class="text-xs font-semibold text-slate-700">Descripción o Resumen</label>
-        <textarea id="doc-resumen" rows="3" placeholder="Síntesis del contenido expuesto..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-      </div>
-
-      <div class="flex justify-end pt-2">
-        <button onclick="publicarClase()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
-          Publicar Recurso
+      <div class="flex gap-2">
+        <button onclick="exportarClases()" class="border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium text-sm px-4 py-2 rounded-lg transition-colors">
+          Exportar clases.json
+        </button>
+        <button onclick="logoutDocente()" class="border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium text-sm px-4 py-2 rounded-lg transition-colors">
+          Cerrar sesión
         </button>
       </div>
     </div>
 
-    <div>
-      <h3 class="font-semibold text-slate-900 text-sm mb-3">Historial de Publicaciones</h3>
-      <div id="docente-history" class="space-y-2"></div>
+    <p class="text-xs text-slate-500 card-modern p-3">
+      Para que todos los alumnos vean lo publicado en el sitio de Vercel: usá <strong>Exportar clases.json</strong>, reemplazá el archivo en el proyecto y hacé push a GitHub.
+    </p>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 card-modern p-6 space-y-4">
+        <h3 class="font-semibold text-slate-900 text-base border-b pb-3">Cargar Recurso o Clase</h3>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-slate-700">Fecha de Clase</label>
+            <input type="text" id="doc-fecha" placeholder="Ej. Lunes 10 de Agosto" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-700">Unidad Temática</label>
+            <select id="doc-unidad" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+              <option>Unidad 1 — Derecho y Relaciones Laborales</option>
+              <option>Unidad 2 — Contrato de Trabajo</option>
+              <option>Unidad 3 — Jornada y Remuneración</option>
+              <option>Unidad 4 — Extinción del Contrato</option>
+              <option>Unidad 5 — Derecho Colectivo</option>
+              <option>Unidad 6 — Riesgos del Trabajo</option>
+              <option>Unidad 7 — Propiedad Intelectual</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Título del Contenido</label>
+          <input type="text" id="doc-titulo" placeholder="Ej. Análisis de caso: Despido con justa causa" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-slate-700">Categoría</label>
+            <select id="doc-tipo" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+              <option value="video">Video / Clase Grabada (YouTube)</option>
+              <option value="doctrina">Material / Apunte (PDF/Word/Drive)</option>
+              <option value="legis">Normativa / Legislación</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-700">Enlace (URL / YouTube / Drive)</label>
+            <input type="text" id="doc-link" placeholder="https://..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Descripción o Resumen</label>
+          <textarea id="doc-resumen" rows="3" placeholder="Síntesis del contenido expuesto..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="publicarClase()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+            Publicar Recurso
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-slate-900 text-sm mb-3">Historial de Publicaciones</h3>
+        <div id="docente-history" class="space-y-2"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -373,9 +411,74 @@
 </main>
 
 <script>
-// --- NAVEGACIÓN ---
+// Cambiá esta clave cuando quieras. Solo el docente debe conocerla.
+const CLAVE_DOCENTE = 'ISP66';
+const STORAGE_KEY = 'publicaciones_catedra';
+const SESSION_KEY = 'rol_docente';
+
+let publicaciones = [];
+
+function escapeHtml(str){
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function esDocente(){
+  return sessionStorage.getItem(SESSION_KEY) === '1';
+}
+
+function aplicarPermisos(){
+  const navDocente = document.getElementById('nav-docente');
+  const btnAcceso = document.getElementById('btn-acceso-docente');
+  const loginBox = document.getElementById('docente-login');
+  const panelBox = document.getElementById('docente-panel');
+
+  if(esDocente()){
+    navDocente.classList.remove('hidden-view');
+    btnAcceso.classList.add('hidden-view');
+    loginBox.classList.add('hidden-view');
+    panelBox.classList.remove('hidden-view');
+  } else {
+    navDocente.classList.add('hidden-view');
+    btnAcceso.classList.remove('hidden-view');
+    loginBox.classList.remove('hidden-view');
+    panelBox.classList.add('hidden-view');
+  }
+}
+
+function loginDocente(){
+  const clave = document.getElementById('docente-clave').value;
+  const error = document.getElementById('docente-login-error');
+  if(clave === CLAVE_DOCENTE){
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('docente-clave').value = '';
+    error.classList.add('hidden-view');
+    aplicarPermisos();
+    render();
+  } else {
+    error.classList.remove('hidden-view');
+  }
+}
+
+function logoutDocente(){
+  sessionStorage.removeItem(SESSION_KEY);
+  aplicarPermisos();
+  if(!document.getElementById('view-docente').classList.contains('hidden-view')){
+    // Mantener en acceso docente (login)
+  }
+  render();
+}
+
 function showView(id){
-  ['home','marco','biblioteca','docente','ia'].forEach(v => {
+  if(id === 'docente' && !esDocente()){
+    // Permitir ver solo el login
+  }
+
+  ['home','marco','clases','biblioteca','docente','ia'].forEach(v => {
     document.getElementById('view-'+v).classList.add('hidden-view');
   });
   const target = document.getElementById('view-'+id);
@@ -403,124 +506,219 @@ function showCat(id, btn){
   btn.classList.remove('text-slate-600');
 }
 
-// --- DATOS Y LOCALSTORAGE ---
-let publicaciones = JSON.parse(localStorage.getItem('publicaciones_catedra')) || [];
-
 function getYouTubeId(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  const match = url.match(regExp);
+  const match = (url || '').match(regExp);
   return (match && match[2].length === 11) ? match[2] : null;
 }
 
-function publicarClase(){
-  const fecha = document.getElementById('doc-fecha').value || 'Fecha actual';
-  const unidad = document.getElementById('doc-unidad').value;
-  const titulo = document.getElementById('doc-titulo').value;
-  const tipo = document.getElementById('doc-tipo').value;
-  const link = document.getElementById('doc-link').value;
-  const resumen = document.getElementById('doc-resumen').value;
+function guardarLocal(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(publicaciones));
+}
 
+function publicarClase(){
+  if(!esDocente()){
+    alert('Debés iniciar sesión como docente.');
+    return;
+  }
+
+  const fecha = document.getElementById('doc-fecha').value.trim();
+  const unidad = document.getElementById('doc-unidad').value;
+  const titulo = document.getElementById('doc-titulo').value.trim();
+  const tipo = document.getElementById('doc-tipo').value;
+  const link = document.getElementById('doc-link').value.trim();
+  const resumen = document.getElementById('doc-resumen').value.trim();
+
+  if(!fecha){
+    alert('Ingresá la fecha de la clase.');
+    return;
+  }
   if(!titulo){
-    alert('Por favor ingrese el título del recurso.');
+    alert('Ingresá el título del recurso.');
     return;
   }
 
   const nuevo = { id: Date.now(), fecha, unidad, titulo, tipo, link, resumen };
   publicaciones.unshift(nuevo);
-  localStorage.setItem('publicaciones_catedra', JSON.stringify(publicaciones));
+  guardarLocal();
 
+  document.getElementById('doc-fecha').value = '';
   document.getElementById('doc-titulo').value = '';
   document.getElementById('doc-link').value = '';
   document.getElementById('doc-resumen').value = '';
 
   render();
-  alert('Recurso publicado con éxito');
+  alert('Recurso publicado. Para que los alumnos lo vean en Vercel, exportá clases.json y subilo a GitHub.');
 }
 
 function eliminar(id){
+  if(!esDocente()) return;
   publicaciones = publicaciones.filter(i => i.id !== id);
-  localStorage.setItem('publicaciones_catedra', JSON.stringify(publicaciones));
+  guardarLocal();
   render();
 }
 
+function exportarClases(){
+  if(!esDocente()) return;
+  const blob = new Blob([JSON.stringify(publicaciones, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'clases.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function selectVideo(ytId, titulo, desc){
-  document.getElementById('main-video-frame').innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+  document.getElementById('main-video-frame').innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${escapeHtml(ytId)}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
   document.getElementById('main-video-title').innerText = titulo;
   document.getElementById('main-video-desc').innerText = desc;
 }
 
+function tipoEtiqueta(tipo){
+  if(tipo === 'video') return 'Video';
+  if(tipo === 'doctrina') return 'Material';
+  if(tipo === 'legis') return 'Legislación';
+  return 'Contenido';
+}
+
 function render(){
+  const listaClases = document.getElementById('lista-clases');
   const docHist = document.getElementById('docente-history');
   const customLegis = document.getElementById('custom-legis-container');
   const customDoctrina = document.getElementById('custom-doctrina-container');
   const videoGrid = document.getElementById('video-grid');
 
+  listaClases.innerHTML = '';
   docHist.innerHTML = '';
   customLegis.innerHTML = '';
   customDoctrina.innerHTML = '';
   videoGrid.innerHTML = '';
 
+  if(publicaciones.length === 0){
+    listaClases.innerHTML = `
+      <div class="card-modern p-6 text-sm text-slate-500">
+        Todavía no hay clases publicadas.
+      </div>
+    `;
+  }
+
   let primerVideo = false;
 
   publicaciones.forEach(i => {
-    // Panel Historial
-    docHist.innerHTML += `
-      <div class="card-modern p-3 flex justify-between items-center text-xs">
-        <div>
-          <p class="font-semibold text-slate-900">${i.titulo}</p>
-          <p class="text-slate-500">${i.fecha} · ${i.unidad}</p>
+    const fecha = escapeHtml(i.fecha);
+    const titulo = escapeHtml(i.titulo);
+    const unidad = escapeHtml(i.unidad);
+    const resumen = escapeHtml(i.resumen);
+    const link = escapeHtml(i.link);
+    const tipo = escapeHtml(tipoEtiqueta(i.tipo));
+
+    // Vista alumnos: Clases (fecha + contenido)
+    listaClases.innerHTML += `
+      <article class="card-modern p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        <div class="space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="tag-badge tag-blue">${fecha}</span>
+            <span class="tag-badge tag-slate">${tipo}</span>
+          </div>
+          <h3 class="font-semibold text-slate-900 text-sm">${titulo}</h3>
+          <p class="text-xs text-slate-500">${unidad}</p>
+          ${resumen ? `<p class="text-xs text-slate-600 leading-relaxed">${resumen}</p>` : ''}
         </div>
-        <button onclick="eliminar(${i.id})" class="text-red-500 hover:text-red-700 font-semibold">Eliminar</button>
-      </div>
+        ${i.link ? `<a href="${link}" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold shrink-0">Abrir ↗</a>` : ''}
+      </article>
     `;
 
-    // Videos
+    // Historial docente
+    if(esDocente()){
+      docHist.innerHTML += `
+        <div class="card-modern p-3 flex justify-between items-center text-xs gap-2">
+          <div>
+            <p class="font-semibold text-slate-900">${titulo}</p>
+            <p class="text-slate-500">${fecha} · ${unidad}</p>
+          </div>
+          <button onclick="eliminar(${i.id})" class="text-red-500 hover:text-red-700 font-semibold">Eliminar</button>
+        </div>
+      `;
+    }
+
     if(i.tipo === 'video'){
       const ytId = getYouTubeId(i.link);
       if(ytId){
+        const desc = `${i.fecha} · ${i.unidad}${i.resumen ? ' · ' + i.resumen : ''}`;
         if(!primerVideo){
-          selectVideo(ytId, i.titulo, `${i.unidad} · ${i.resumen}`);
+          selectVideo(ytId, i.titulo, desc);
           primerVideo = true;
         }
         videoGrid.innerHTML += `
-          <div onclick="selectVideo('${ytId}', '${i.titulo}', '${i.unidad} · ${i.resumen}')" class="card-modern p-3 cursor-pointer hover:border-blue-300">
-            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" class="w-full h-28 object-cover rounded-md mb-2">
-            <h4 class="font-semibold text-xs text-slate-900 line-clamp-1">${i.titulo}</h4>
-            <p class="text-[11px] text-slate-500">${i.unidad}</p>
+          <div onclick="selectVideo('${ytId}', '${titulo.replace(/'/g, '&#39;')}', '${escapeHtml(desc).replace(/'/g, '&#39;')}')" class="card-modern p-3 cursor-pointer hover:border-blue-300">
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="" class="w-full h-28 object-cover rounded-md mb-2">
+            <p class="text-[11px] font-semibold text-blue-600 mb-1">${fecha}</p>
+            <h4 class="font-semibold text-xs text-slate-900 line-clamp-1">${titulo}</h4>
+            <p class="text-[11px] text-slate-500">${unidad}</p>
           </div>
         `;
       }
     }
 
-    // Legislación
     if(i.tipo === 'legis'){
       customLegis.innerHTML += `
-        <div class="card-modern p-5 flex justify-between items-start">
+        <div class="card-modern p-5 flex justify-between items-start gap-3">
           <div>
-            <span class="tag-badge tag-slate mb-2">${i.unidad}</span>
-            <h3 class="font-semibold text-slate-900 text-sm">${i.titulo}</h3>
-            <p class="text-xs text-slate-500 mt-1">${i.resumen}</p>
+            <span class="tag-badge tag-blue mb-2">${fecha}</span>
+            <h3 class="font-semibold text-slate-900 text-sm">${titulo}</h3>
+            <p class="text-xs text-slate-500 mt-1">${unidad}</p>
+            ${resumen ? `<p class="text-xs text-slate-500 mt-1">${resumen}</p>` : ''}
           </div>
-          ${i.link ? `<a href="${i.link}" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold">Abrir ↗</a>` : ''}
+          ${i.link ? `<a href="${link}" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold">Abrir ↗</a>` : ''}
         </div>
       `;
     }
 
-    // Doctrina
     if(i.tipo === 'doctrina'){
       customDoctrina.innerHTML += `
         <div class="card-modern p-5">
-          <span class="tag-badge tag-blue mb-2">${i.unidad}</span>
-          <h3 class="font-semibold text-slate-900 text-sm">${i.titulo}</h3>
-          <p class="text-xs text-slate-500 mt-1">${i.resumen}</p>
-          ${i.link ? `<a href="${i.link}" target="_blank" class="inline-block text-blue-600 hover:text-blue-700 text-xs font-semibold mt-2">Abrir Recurso ↗</a>` : ''}
+          <span class="tag-badge tag-blue mb-2">${fecha}</span>
+          <h3 class="font-semibold text-slate-900 text-sm">${titulo}</h3>
+          <p class="text-xs text-slate-500 mt-1">${unidad}</p>
+          ${resumen ? `<p class="text-xs text-slate-500 mt-1">${resumen}</p>` : ''}
+          ${i.link ? `<a href="${link}" target="_blank" class="inline-block text-blue-600 hover:text-blue-700 text-xs font-semibold mt-2">Abrir Recurso ↗</a>` : ''}
         </div>
       `;
     }
   });
 }
 
-document.addEventListener('DOMContentLoaded', render);
+async function cargarPublicaciones(){
+  let desdeArchivo = null;
+  try {
+    const res = await fetch('clases.json', { cache: 'no-store' });
+    if(res.ok){
+      const data = await res.json();
+      if(Array.isArray(data)) desdeArchivo = data;
+    }
+  } catch (_) {}
+
+  const local = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+
+  // Prioridad: archivo compartido del sitio; si el docente editó en esta sesión, usa local.
+  if(esDocente() && Array.isArray(local) && local.length){
+    publicaciones = local;
+  } else if(desdeArchivo){
+    publicaciones = desdeArchivo;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(publicaciones));
+  } else if(Array.isArray(local)){
+    publicaciones = local;
+  } else {
+    publicaciones = [];
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  aplicarPermisos();
+  await cargarPublicaciones();
+  render();
+});
 </script>
 </body>
 </html>

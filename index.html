@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legislación Laboral | ISP N° 66</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFC; /* Slate 50 */
+    color: #0F172A; /* Slate 900 */
+  }
+
+  .nav-btn {
+    color: #64748B;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover {
+    color: #0F172A;
+    background-color: #F1F5F9;
+  }
+  .nav-btn.active {
+    color: #2563EB; /* Blue 600 */
+    background-color: #EFF6FF; /* Blue 50 */
+    font-weight: 600;
+  }
+
+  .card-modern {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.75rem; /* 12px */
+    transition: all 0.2s ease;
+  }
+  .card-modern:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+  }
+
+  .tag-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .tag-blue { background-color: #EFF6FF; color: #2563EB; }
+  .tag-slate { background-color: #F1F5F9; color: #475569; }
+
+  .hidden-view { display: none; }
+  .fade-in { animation: fadeIn 0.3s ease-out both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR MODERNO ===================== -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3 cursor-pointer" onclick="showView('home')">
+      <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
+        66
+      </div>
+      <div>
+        <h1 class="text-base font-semibold leading-tight text-slate-900">Legislación Laboral</h1>
+        <p class="text-xs text-slate-500 font-normal">Tecnicatura en Gestión de las Organizaciones · ISP 66</p>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-1">
+      <button class="nav-btn active" data-view="home" onclick="showView('home')">Inicio</button>
+      <button class="nav-btn" data-view="marco" onclick="showView('marco')">Programa</button>
+      <button class="nav-btn" data-view="biblioteca" onclick="showView('biblioteca')">Biblioteca & Videos</button>
+      <button class="nav-btn" data-view="docente" onclick="showView('docente')">Panel Docente</button>
+      <button class="nav-btn" data-view="ia" onclick="showView('ia')">Asistente IA</button>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+<!-- ===================== HOME / DASHBOARD ===================== -->
+<section id="view-home" class="fade-in space-y-10">
+  <!-- Hero Section -->
+  <div class="card-modern p-8 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white relative overflow-hidden">
+    <div class="max-w-2xl relative z-10 space-y-4">
+      <span class="tag-badge bg-blue-500/20 text-blue-300 border border-blue-400/30">Régimen Cuatrimestral 2026</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+        Marco normativo e interpretación para la gestión organizacional.
+      </h2>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Plataforma académica oficial de la cátedra de Legislación Laboral. Acceso centralizado a recursos de clase, jurisprudencia, biblioteca digital y asistencia asistida por Inteligencia Artificial.
+      </p>
+      <div class="pt-2 flex flex-wrap gap-3">
+        <button onclick="showView('biblioteca')" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+          Explorar Biblioteca Digital
+        </button>
+        <button onclick="showView('marco')" class="bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-lg backdrop-blur-sm transition-colors">
+          Ver Programa de la Materia
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta Cátedra + Métricas -->
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="card-modern p-6 flex items-center gap-4">
+      <div class="w-14 h-14 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-700 text-lg">
+        DZ
+      </div>
+      <div>
+        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Docente a Cargo</p>
+        <h3 class="text-base font-bold text-slate-900">Dr. Dante Zanel</h3>
+        <p class="text-xs text-slate-500">Titular de Cátedra</p>
+      </div>
+    </div>
+
+    <div class="card-modern p-6 flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-semibold text-lg">
+        07
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-slate-900">Unidades Temáticas</h3>
+        <p class="text-xs text-slate-500">Programa cuatrimestral intensivo</p>
+      </div>
+    </div>
+
+    <div class="card-modern p-6 flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-semibold text-lg">
+        48h
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-slate-900">Carga Horaria Total</h3>
+        <p class="text-xs text-slate-500">3 horas cátedra semanales</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accesos rápidos -->
+  <div>
+    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Módulos del Sistema</h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div onclick="showView('marco')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
+        <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">01</div>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Programa & Planificación</h4>
+        <p class="text-xs text-slate-500 mt-1">Syllabus, régimen de cursado y fechas.</p>
+      </div>
+      <div onclick="showView('biblioteca')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
+        <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">02</div>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Biblioteca & Legislación</h4>
+        <p class="text-xs text-slate-500 mt-1">LCT, leyes complementarias y doctrina.</p>
+      </div>
+      <div onclick="showView('biblioteca')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
+        <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">03</div>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Videoteca de Clases</h4>
+        <p class="text-xs text-slate-500 mt-1">Grabaciones y contenido audiovisual.</p>
+      </div>
+      <div onclick="showView('ia')" class="card-modern p-5 cursor-pointer hover:border-blue-300 group">
+        <div class="w-8 h-8 rounded-md bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center text-slate-600 text-sm mb-3">04</div>
+        <h4 class="font-semibold text-slate-900 text-sm group-hover:text-blue-600">Tutor de IA</h4>
+        <p class="text-xs text-slate-500 mt-1">Consultas guiadas sobre la materia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARCO INSTITUCIONAL ===================== -->
+<section id="view-marco" class="hidden-view fade-in space-y-6">
+  <div>
+    <h2 class="text-2xl font-bold text-slate-900">Programa Académico</h2>
+    <p class="text-sm text-slate-500">Unidades curriculares de la materia Legislación Laboral.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 1</span>
+      <h3 class="font-semibold text-slate-900">Derecho, Organización y Relaciones Laborales</h3>
+      <p class="text-xs text-slate-500 mt-1">Principios del derecho laboral, fuentes y el rol de las organizaciones.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 2</span>
+      <h3 class="font-semibold text-slate-900">Contrato y Relación de Trabajo</h3>
+      <p class="text-xs text-slate-500 mt-1">Modalidades contractuales, derechos y deberes de las partes.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 3</span>
+      <h3 class="font-semibold text-slate-900">Jornada, Remuneración y Condiciones</h3>
+      <p class="text-xs text-slate-500 mt-1">Salarios, descansos, licencias y liquidación de haberes.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 4</span>
+      <h3 class="font-semibold text-slate-900">Suspensión y Extinción del Contrato</h3>
+      <p class="text-xs text-slate-500 mt-1">Despidos, preavisos, indemnizaciones y régimen sancionatorio.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 5</span>
+      <h3 class="font-semibold text-slate-900">Derecho Colectivo del Trabajo</h3>
+      <p class="text-xs text-slate-500 mt-1">Asociaciones sindicales, CCT y convenios colectivos.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600">
+      <span class="tag-badge tag-blue mb-2">Unidad 6</span>
+      <h3 class="font-semibold text-slate-900">Seguridad, Higiene y Riesgos (ART)</h3>
+      <p class="text-xs text-slate-500 mt-1">Ley 24.557, prevención e imprevistos en el ámbito laboral.</p>
+    </div>
+    <div class="card-modern p-5 border-l-4 border-l-blue-600 md:col-span-2">
+      <span class="tag-badge tag-blue mb-2">Unidad 7</span>
+      <h3 class="font-semibold text-slate-900">Propiedad Intelectual, Marcas y Patentes</h3>
+      <p class="text-xs text-slate-500 mt-1">Derechos de autor, marcas y registro de invenciones aplicadas a la gestión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BIBLIOTECA & VIDEOTECA ===================== -->
+<section id="view-biblioteca" class="hidden-view fade-in space-y-6">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div>
+      <h2 class="text-2xl font-bold text-slate-900">Biblioteca Digital y Videoteca</h2>
+      <p class="text-sm text-slate-500">Recursos de estudio, normativa y grabaciones de clase.</p>
+    </div>
+
+    <!-- Pestañas simples -->
+    <div class="bg-slate-200/60 p-1 rounded-lg flex gap-1 self-start">
+      <button onclick="showCat('legis', this)" class="subtab-btn active text-xs font-medium px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-sm transition-all">Legislación</button>
+      <button onclick="showCat('doctrina', this)" class="subtab-btn text-xs font-medium px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all">Material & Doctrina</button>
+      <button onclick="showCat('video', this)" class="subtab-btn text-xs font-medium px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all">Videoteca</button>
+    </div>
+  </div>
+
+  <!-- VISTA LEGISLACIÓN -->
+  <div id="cat-legis" class="grid sm:grid-cols-2 gap-4">
+    <div class="card-modern p-5 flex justify-between items-start">
+      <div>
+        <span class="tag-badge tag-slate mb-2">Ley 20.744</span>
+        <h3 class="font-semibold text-slate-900 text-sm">Ley de Contrato de Trabajo</h3>
+        <p class="text-xs text-slate-500 mt-1">Texto ordenado con modificaciones vigentes.</p>
+      </div>
+      <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold">Abrir ↗</a>
+    </div>
+
+    <div class="card-modern p-5 flex justify-between items-start">
+      <div>
+        <span class="tag-badge tag-slate mb-2">Ley 24.557</span>
+        <h3 class="font-semibold text-slate-900 text-sm">Ley de Riesgos del Trabajo</h3>
+        <p class="text-xs text-slate-500 mt-1">Régimen de la ART e indemnizaciones.</p>
+      </div>
+      <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold">Abrir ↗</a>
+    </div>
+
+    <div id="custom-legis-container" class="contents"></div>
+  </div>
+
+  <!-- VISTA DOCTRINA -->
+  <div id="cat-doctrina" class="grid sm:grid-cols-2 gap-4 hidden-view">
+    <div class="card-modern p-5">
+      <span class="tag-badge tag-blue mb-2">Guía de Cátedra</span>
+      <h3 class="font-semibold text-slate-900 text-sm">Guía Práctica: Liquidación de Haberes</h3>
+      <p class="text-xs text-slate-500 mt-1">Cálculo de Horas Extra, SAC, Vacaciones y Licencias. Cátedra Dr. Dante Zanel.</p>
+    </div>
+    <div id="custom-doctrina-container" class="contents"></div>
+  </div>
+
+  <!-- VISTA VIDEOTECA -->
+  <div id="cat-video" class="hidden-view space-y-6">
+    <div id="video-main-display" class="card-modern p-4 bg-slate-900 text-white overflow-hidden">
+      <div id="main-video-frame" class="aspect-video w-full bg-slate-950 rounded-lg flex items-center justify-center overflow-hidden">
+        <p class="text-xs text-slate-400">Selecciona o carga un video para reproducirlo aquí</p>
+      </div>
+      <div class="pt-4">
+        <h3 id="main-video-title" class="font-bold text-base text-white">Sin video cargado</h3>
+        <p id="main-video-desc" class="text-xs text-slate-400 mt-1">Carga enlaces desde el Panel Docente.</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-slate-700 mb-3">Videos de la Cátedra</h3>
+      <div id="video-grid" class="grid sm:grid-cols-3 gap-4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PANEL DOCENTE ===================== -->
+<section id="view-docente" class="hidden-view fade-in space-y-6">
+  <div>
+    <h2 class="text-2xl font-bold text-slate-900">Panel Docente</h2>
+    <p class="text-sm text-slate-500">Gestión e ingreso de nuevos materiales de la cátedra.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 card-modern p-6 space-y-4">
+      <h3 class="font-semibold text-slate-900 text-base border-b pb-3">Cargar Recurso o Clase</h3>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Fecha de Clase</label>
+          <input type="text" id="doc-fecha" placeholder="Ej. Lunes 10 de Agosto" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Unidad Temática</label>
+          <select id="doc-unidad" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+            <option>Unidad 1 — Derecho y Relaciones Laborales</option>
+            <option>Unidad 2 — Contrato de Trabajo</option>
+            <option>Unidad 3 — Jornada y Remuneración</option>
+            <option>Unidad 4 — Extinción del Contrato</option>
+            <option>Unidad 5 — Derecho Colectivo</option>
+            <option>Unidad 6 — Riesgos del Trabajo</option>
+            <option>Unidad 7 — Propiedad Intelectual</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="text-xs font-semibold text-slate-700">Título del Contenido</label>
+        <input type="text" id="doc-titulo" placeholder="Ej. Análisis de caso: Despido con justa causa" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Categoría</label>
+          <select id="doc-tipo" class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+            <option value="video">Video / Clase Grabada (YouTube)</option>
+            <option value="doctrina">Material / Apunte (PDF/Word/Drive)</option>
+            <option value="legis">Normativa / Legislación</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-700">Enlace (URL / YouTube / Drive)</label>
+          <input type="text" id="doc-link" placeholder="https://..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+      </div>
+
+      <div>
+        <label class="text-xs font-semibold text-slate-700">Descripción o Resumen</label>
+        <textarea id="doc-resumen" rows="3" placeholder="Síntesis del contenido expuesto..." class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button onclick="publicarClase()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+          Publicar Recurso
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 text-sm mb-3">Historial de Publicaciones</h3>
+      <div id="docente-history" class="space-y-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ASISTENTE IA ===================== -->
+<section id="view-ia" class="hidden-view fade-in">
+  <div class="max-w-xl mx-auto card-modern p-8 text-center space-y-4">
+    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mx-auto flex items-center justify-center font-bold text-lg">
+      Gem
+    </div>
+    <h2 class="text-xl font-bold text-slate-900">Tutor de IA — Legislación Laboral</h2>
+    <p class="text-xs text-slate-500 leading-relaxed">
+      Asistente conversacional configurado exclusivamente para responder dudas teóricas y prácticas sobre el programa de la materia y la Ley de Contrato de Trabajo.
+    </p>
+    <a href="https://gemini.google.com" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-6 py-2.5 rounded-lg transition-colors">
+      Abrir Asistente Gemini ↗
+    </a>
+  </div>
+</section>
+
+</main>
+
+<script>
+// --- NAVEGACIÓN ---
+function showView(id){
+  ['home','marco','biblioteca','docente','ia'].forEach(v => {
+    document.getElementById('view-'+v).classList.add('hidden-view');
+  });
+  const target = document.getElementById('view-'+id);
+  target.classList.remove('hidden-view');
+  target.classList.remove('fade-in'); void target.offsetWidth; target.classList.add('fade-in');
+
+  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.querySelector(`.nav-btn[data-view="${id}"]`);
+  if(activeBtn) activeBtn.classList.add('active');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showCat(id, btn){
+  ['legis','doctrina','video'].forEach(c => {
+    document.getElementById('cat-'+c).classList.add('hidden-view');
+  });
+  document.getElementById('cat-'+id).classList.remove('hidden-view');
+
+  document.querySelectorAll('.subtab-btn').forEach(b => {
+    b.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+    b.classList.add('text-slate-600');
+  });
+  btn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+  btn.classList.remove('text-slate-600');
+}
+
+// --- DATOS Y LOCALSTORAGE ---
+let publicaciones = JSON.parse(localStorage.getItem('publicaciones_catedra')) || [];
+
+function getYouTubeId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+}
+
+function publicarClase(){
+  const fecha = document.getElementById('doc-fecha').value || 'Fecha actual';
+  const unidad = document.getElementById('doc-unidad').value;
+  const titulo = document.getElementById('doc-titulo').value;
+  const tipo = document.getElementById('doc-tipo').value;
+  const link = document.getElementById('doc-link').value;
+  const resumen = document.getElementById('doc-resumen').value;
+
+  if(!titulo){
+    alert('Por favor ingrese el título del recurso.');
+    return;
+  }
+
+  const nuevo = { id: Date.now(), fecha, unidad, titulo, tipo, link, resumen };
+  publicaciones.unshift(nuevo);
+  localStorage.setItem('publicaciones_catedra', JSON.stringify(publicaciones));
+
+  document.getElementById('doc-titulo').value = '';
+  document.getElementById('doc-link').value = '';
+  document.getElementById('doc-resumen').value = '';
+
+  render();
+  alert('Recurso publicado con éxito');
+}
+
+function eliminar(id){
+  publicaciones = publicaciones.filter(i => i.id !== id);
+  localStorage.setItem('publicaciones_catedra', JSON.stringify(publicaciones));
+  render();
+}
+
+function selectVideo(ytId, titulo, desc){
+  document.getElementById('main-video-frame').innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+  document.getElementById('main-video-title').innerText = titulo;
+  document.getElementById('main-video-desc').innerText = desc;
+}
+
+function render(){
+  const docHist = document.getElementById('docente-history');
+  const customLegis = document.getElementById('custom-legis-container');
+  const customDoctrina = document.getElementById('custom-doctrina-container');
+  const videoGrid = document.getElementById('video-grid');
+
+  docHist.innerHTML = '';
+  customLegis.innerHTML = '';
+  customDoctrina.innerHTML = '';
+  videoGrid.innerHTML = '';
+
+  let primerVideo = false;
+
+  publicaciones.forEach(i => {
+    // Panel Historial
+    docHist.innerHTML += `
+      <div class="card-modern p-3 flex justify-between items-center text-xs">
+        <div>
+          <p class="font-semibold text-slate-900">${i.titulo}</p>
+          <p class="text-slate-500">${i.fecha} · ${i.unidad}</p>
+        </div>
+        <button onclick="eliminar(${i.id})" class="text-red-500 hover:text-red-700 font-semibold">Eliminar</button>
+      </div>
+    `;
+
+    // Videos
+    if(i.tipo === 'video'){
+      const ytId = getYouTubeId(i.link);
+      if(ytId){
+        if(!primerVideo){
+          selectVideo(ytId, i.titulo, `${i.unidad} · ${i.resumen}`);
+          primerVideo = true;
+        }
+        videoGrid.innerHTML += `
+          <div onclick="selectVideo('${ytId}', '${i.titulo}', '${i.unidad} · ${i.resumen}')" class="card-modern p-3 cursor-pointer hover:border-blue-300">
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" class="w-full h-28 object-cover rounded-md mb-2">
+            <h4 class="font-semibold text-xs text-slate-900 line-clamp-1">${i.titulo}</h4>
+            <p class="text-[11px] text-slate-500">${i.unidad}</p>
+          </div>
+        `;
+      }
+    }
+
+    // Legislación
+    if(i.tipo === 'legis'){
+      customLegis.innerHTML += `
+        <div class="card-modern p-5 flex justify-between items-start">
+          <div>
+            <span class="tag-badge tag-slate mb-2">${i.unidad}</span>
+            <h3 class="font-semibold text-slate-900 text-sm">${i.titulo}</h3>
+            <p class="text-xs text-slate-500 mt-1">${i.resumen}</p>
+          </div>
+          ${i.link ? `<a href="${i.link}" target="_blank" class="text-blue-600 hover:text-blue-700 text-xs font-semibold">Abrir ↗</a>` : ''}
+        </div>
+      `;
+    }
+
+    // Doctrina
+    if(i.tipo === 'doctrina'){
+      customDoctrina.innerHTML += `
+        <div class="card-modern p-5">
+          <span class="tag-badge tag-blue mb-2">${i.unidad}</span>
+          <h3 class="font-semibold text-slate-900 text-sm">${i.titulo}</h3>
+          <p class="text-xs text-slate-500 mt-1">${i.resumen}</p>
+          ${i.link ? `<a href="${i.link}" target="_blank" class="inline-block text-blue-600 hover:text-blue-700 text-xs font-semibold mt-2">Abrir Recurso ↗</a>` : ''}
+        </div>
+      `;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
